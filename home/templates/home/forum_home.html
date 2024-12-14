@@ -1,0 +1,24 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Community Forum{% endblock %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Community Forum</h1>
+    <p class="lead">Join the discussion! Share your thoughts and engage with other members of the community.</p>
+    <a class="btn btn-primary btn-lg" href="{% url 'start_discussion' %}" role="button">Start a New Discussion</a>
+</div>
+<div class="container mt-5 chat-box">
+    <h2>Current Discussions</h2>
+    <ul class="list-unstyled">
+        {% for discussion in discussions %}
+        <li class="media mb-3">
+            <div class="media-body">
+                <h5 class="mt-0 mb-1"><a href="{% url 'discussion_detail' discussion.id %}">{{ discussion.subject }}</a></h5>
+                <p>Started by {{ discussion.name }} on {{ discussion.created_at|date:"F j, Y" }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

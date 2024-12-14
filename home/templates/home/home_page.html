@@ -1,0 +1,183 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}Race2Space{% endblock %}
+
+{% block content %}
+<div class="container mt-5 d-flex align-items-center">
+    <img src="{% static 'home/racespace.png' %}" alt="Space" class="img-fluid" style="max-width: 300px; margin-right: 20px;">
+    <div>
+        <p class="lead">At Race2Space, we celebrate the incredible contributions of developing countries in the field of space advancement and exploration. Our mission is to highlight the remarkable achievements, technological innovations, and collaborative efforts that have propelled these nations into the space frontier.</p>
+        <hr class="my-4">
+        <p>Over the years, space exploration has transformed from a race between superpowers to a global endeavor, with developing countries playing a pivotal role. From launching satellites to conducting groundbreaking research, these nations are making significant strides in harnessing space technology for the benefit of humanity.</p>
+        <p>Our focus includes the contributions of countries such as Algeria, Angola, Argentina, Azerbaijan, Bahrain, Brazil, China, Egypt, India, Indonesia, Iran, Kenya, Mexico, Pakistan, Peru, the Philippines, South Africa, Türkiye, Ukraine, Venezuela, and Zimbabwe. Explore the profiles to learn more about each country's unique journey and impact on space exploration.</p>
+        <p>To learn more about this project, click <a href="https://jeromebustarga.site/wordpress/final-project-race2space/" target="_blank">here</a>.</p>
+    </div>
+</div>
+
+<!-- Embedded resources -->
+<div class="container mt-4">
+    <h2 class="text-center">WELCOME</h2>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>ISS Tracker</h4>
+            <iframe src="https://www.orbtrack.org/#/?satName=ISS%20(ZARYA)" width="100%" height="400" frameborder="0"></iframe>
+        </div>
+        <div class="col-md-4">
+            <h4>UNCTAD Report on Space Technologies</h4>
+            <iframe src="https://docs.google.com/viewer?url=https://unctad.org/system/files/official-document/dtlstict2021d1_en.pdf&embedded=true" width="100%" height="400" frameborder="0"></iframe>
+        </div>
+        <div class="col-md-4">
+            <h4>Developing Countries in Space Industry</h4>
+            <script async src="https://static.medium.com/embed.js"></script><a class="m-story" href="https://medium.com/bombilya-blog/should-developing-countries-invest-in-space-technology-c2a3007df6f9">Should Developing Countries Invest In Space Technology?</a>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <h4>WNYC Studios On-Demand Player</h4>
+        <iframe frameborder="0" scrolling="no" height="130" width="100%" src="https://www.wnyc.org/widgets/ondemand_player/wnycstudios/#file=/audio/json/998877/&share=1"></iframe>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <h2 class="text-center">Select Graph to View</h2>
+    <div class="text-center mb-4">
+        <select id="graphFilter" class="form-control" style="max-width: 300px; margin: 0 auto;">
+            <option value="spaceObjects">Space Objects</option>
+            <option value="govSpending">Government Spending</option>
+        </select>
+    </div>
+
+    <div id="spaceObjectsGraph" class="graph-container">
+    <h2 class="text-center">Number of Objects Launched into Space by Country</h2>
+    <div class="text-center">
+        <img src="data:image/png;base64,{{ graphic_space_objects }}" alt="Number of Objects Launched into Space by Country" class="img-fluid rounded shadow-lg" style="border: 2px solid #333; max-width: 100%; height: auto;">
+    </div>
+    <div class="mt-4 explanation-text">
+        <h3>Data Analysis</h3>
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <h4>Leading Nations</h4>
+                <p>Brazil leads developing nations with approximately 42 objects launched into space, followed by Türkiye with around 32 launches, demonstrating these countries' significant investments in their space capabilities.</p>
+
+                <h4>Regional Distribution</h4>
+                <h5>South America</h5>
+                <ul>
+                    <li>Brazil leads the continent</li>
+                    <li>Argentina has launched about 19 objects</li>
+                    <li>Peru and Venezuela show smaller but notable contributions</li>
+                </ul>
+
+                <h5>Asia</h5>
+                <ul>
+                    <li>Indonesia has launched approximately 23 objects</li>
+                    <li>Pakistan and Iran each have launched between 8-11 objects</li>
+                    <li>The Philippines has contributed about 9 launches</li>
+                </ul>
+
+                <h5>Africa</h5>
+                <ul>
+                    <li>Egypt leads with roughly 14 launches</li>
+                    <li>South Africa follows with 9 launches</li>
+                    <li>Algeria, Angola, Kenya, and Zimbabwe show emerging space capabilities</li>
+                </ul>
+
+                <h4>Emerging Programs</h4>
+                <p>Several countries show modest but significant progress in their space programs, with launches ranging from 1-5 objects, indicating their growing involvement in space activities. This reflects UNOOSA's mission to promote international cooperation in the peaceful uses of outer space, particularly supporting developing nations in building their space capabilities.</p>
+
+                <p class="mt-3"><em>Data source: United Nations Office for Outer Space Affairs (UNOOSA)</em></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div id="govSpendingGraph" class="graph-container" style="display: none;">
+    <h2 class="text-center">Government Spending on Space Programs (in USD)</h2>
+    <div class="text-center">
+        <img src="data:image/png;base64,{{ graphic_gov_spending }}" alt="Government Spending on Space Programs (in USD)" class="img-fluid rounded shadow-lg" style="border: 2px solid #333; max-width: 100%; height: auto;">
+    </div>
+    <div class="mt-4 explanation-text">
+        <h3>Data Analysis</h3>
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <h4>Investment Leaders</h4>
+                <p>Azerbaijan and Indonesia lead with investments of approximately $220 million each in their space programs, showcasing their strong commitment to space capabilities development.</p>
+
+                <h4>Regional Investment Patterns</h4>
+                <h5>Asia</h5>
+                <ul>
+                    <li>The Philippines allocates around $150 million</li>
+                    <li>Pakistan invests approximately $45 million</li>
+                    <li>Iran maintains a budget of about $10 million</li>
+                </ul>
+
+                <h5>South America</h5>
+                <ul>
+                    <li>Argentina commits roughly $65 million</li>
+                    <li>Brazil invests approximately $20 million</li>
+                    <li>Venezuela maintains a smaller budget of about $10 million</li>
+                </ul>
+
+                <h5>Africa</h5>
+                <ul>
+                    <li>Algeria leads with nearly $100 million</li>
+                    <li>South Africa invests approximately $85 million</li>
+                    <li>Egypt allocates around $50 million</li>
+                    <li>Kenya, Zimbabwe, and Angola maintain smaller budgets under $30 million</li>
+                </ul>
+
+                <h4>Emerging Programs</h4>
+                <ul>
+                    <li>Türkiye has allocated approximately $50 million</li>
+                    <li>Ukraine maintains a budget of about $50 million</li>
+                    <li>Bahrain and Peru have more modest investments, ranging from $20-30 million</li>
+                </ul>
+
+                <h4>Investment Impact</h4>
+                <p>These financial commitments demonstrate varying levels of priority given to space programs across developing nations. While some countries like Azerbaijan and Indonesia are making substantial investments, others are taking a more measured approach, balancing space development with other national priorities. The spending patterns often correlate with each nation's broader technological and economic development goals.</p>
+
+                <p class="mt-3"><em>Note: Estimated figures for 2024, compiled from various government and industry sources.</em></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script>
+    document.getElementById('graphFilter').addEventListener('change', function() {
+        var selectedValue = this.value;
+        document.getElementById('spaceObjectsGraph').style.display = selectedValue === 'spaceObjects' ? 'block' : 'none';
+        document.getElementById('govSpendingGraph').style.display = selectedValue === 'govSpending' ? 'block' : 'none';
+    });
+</script>
+<style>
+    .explanation-text {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .card.bg-dark {
+        background: rgba(33, 37, 41, 0.9) !important;
+    }
+    .explanation-text h4 {
+        color: #00d1ff;
+        margin-top: 1rem;
+    }
+    .explanation-text h5 {
+        color: #ffffff;
+        margin-top: 0.8rem;
+    }
+    .explanation-text ul {
+        margin-left: 1.5rem;
+    }
+    .explanation-text p {
+        line-height: 1.6;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block title %}{{ profile.country_name }} - {{ profile.agency_name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-2">
+    <h1 class="text-center">{{ profile.agency_name }}</h1>
+    <h2 class="text-center">{{ profile.country_name }}</h2>
+    <hr>
+    <h3>Overview</h3>
+    <p>{{ profile.overview }}</p>
+    <h3>History</h3>
+    <p>{{ profile.history }}</p>
+    <h3>Notable Missions</h3>
+    <p>{{ profile.notable_missions }}</p>
+    <h3>Technological Innovations</h3>
+    <p>{{ profile.technological_innovations }}</p>
+    <h3>Collaborations</h3>
+    <p>{{ profile.collaborations }}</p>
+    <h3>Future Plans</h3>
+    <p>{{ profile.future_plans }}</p>
+
+    <h3>Space Objects</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name of Space Object</th>
+                <th>Date of Launch</th>
+                <th>Status</th>
+                <th>Function</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in space_objects %}
+                <tr>
+                    <td>{{ obj.name_of_space_object }}</td>
+                    <td>{{ obj.date_of_launch }}</td>
+                    <td>{{ obj.status }}</td>
+                    <td>{{ obj.function_of_space_object }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-primary" href="{% url 'agency_list' %}">Go Back to Agency List</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}

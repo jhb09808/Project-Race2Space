@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Missions{% endblock %}
+
+{% block content %}
+<h1>Latest Space Missions</h1>
+<div class="missions-container">
+    {% for mission in missions %}
+    <div class="mission-article">
+        <h3>{{ mission.title }}</h3>
+        <p>{{ mission.summary }}</p>
+        <a href="{{ mission.link }}" target="_blank">Read more</a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
